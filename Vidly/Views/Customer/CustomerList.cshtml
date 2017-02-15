@@ -15,12 +15,14 @@
     {
         <th> Customer Name </th>
         <th> Discount Rate </th>
+        <th> Membership Type</th>
         foreach (var customer in Model)
         {
 
                 <tr>
                     <td> @Html.ActionLink(customer.CustomerName, "CustomerDetail", "Customer", new { CustomerID = customer.CustomerID }, null) </td>
                     <td> @customer.MembershipType.DiscountRate%</td>
+                    <td>@customer.MembershipType.MembershipName</td>
                 </tr>
             }
         }

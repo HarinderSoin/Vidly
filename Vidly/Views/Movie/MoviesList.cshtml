@@ -1,0 +1,27 @@
+﻿@using System.Web.UI.WebControls
+@model IEnumerable<Vidly.Models.Movie>
+@{
+    ViewBag.Title = "MoviesList";
+}
+
+<h2>Movies List</h2>
+<table class="table table-bordered table-hover">
+    <thead> Movie Names</thead>
+    @if (!Model.Any())
+    {
+        <p>No Movies yet</p>
+    }
+    else
+    {
+        foreach (var movies in Model)
+         {
+             <tr>
+                 <td>
+                     @movies.MovieName
+                 </td>
+             </tr>
+         }
+}
+       
+</table>
+

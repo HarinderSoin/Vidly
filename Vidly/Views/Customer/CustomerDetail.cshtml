@@ -5,5 +5,20 @@
 
 <h2>Customer Detail</h2>
 
-<p>@Model.CustomerName</p>
+<p>
+   <h3> @Model.CustomerName</h3> 
 
+
+        @if (@Model.DateOfBirth.HasValue)
+        {
+            <li>
+                @Model.DateOfBirth.Value.ToString("dd-MMM-yyyy")
+            </li>
+           
+        }
+    <li>
+        Membership Type: @Model.MembershipType.MembershipName
+    </li>
+
+
+</p>

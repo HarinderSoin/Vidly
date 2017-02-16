@@ -11,10 +11,12 @@ namespace Vidly.Models
     public class Customer
     {
         public int CustomerID { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         [Required]
         [StringLength(255)]
         public string CustomerName { get; set; }
+
         
         public bool IsSubscribedToNewsletter { get; set; }
         public MembershipType MembershipType { get; set; } 

@@ -45,7 +45,7 @@ namespace Vidly.Controllers
         public ActionResult CustomerDetail(int customerID)
         {
             var customerDetail = new Customer();
-            customerDetail = this._context.Customers.SingleOrDefault(x => x.CustomerID == customerID);
+            customerDetail = this._context.Customers.Include(c => c.MembershipType).SingleOrDefault(x => x.CustomerID == customerID);
 
             if (customerDetail == null)
             {

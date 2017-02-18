@@ -243,9 +243,26 @@
     <Compile Include="Migrations\201702152249167_MakeCustomerDateOfBirthNullable.Designer.cs">
       <DependentUpon>201702152249167_MakeCustomerDateOfBirthNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702162147229_AddMovieAttributes.cs" />
+    <Compile Include="Migrations\201702162147229_AddMovieAttributes.Designer.cs">
+      <DependentUpon>201702162147229_AddMovieAttributes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702162249227_AddGenre.cs" />
+    <Compile Include="Migrations\201702162249227_AddGenre.Designer.cs">
+      <DependentUpon>201702162249227_AddGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702162251071_AddDataToGeneres.cs" />
+    <Compile Include="Migrations\201702162251071_AddDataToGeneres.Designer.cs">
+      <DependentUpon>201702162251071_AddDataToGeneres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702171453167_AddCopiestoMovies.cs" />
+    <Compile Include="Migrations\201702171453167_AddCopiestoMovies.Designer.cs">
+      <DependentUpon>201702171453167_AddCopiestoMovies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -318,6 +335,7 @@
     <Content Include="Views\Customer\CustomerList.cshtml" />
     <Content Include="Views\Customer\CustomerDetail.cshtml" />
     <Content Include="Views\Movie\MoviesList.cshtml" />
+    <Content Include="Views\Movie\MovieDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -360,6 +378,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702152249167_MakeCustomerDateOfBirthNullable.resx">
       <DependentUpon>201702152249167_MakeCustomerDateOfBirthNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702162147229_AddMovieAttributes.resx">
+      <DependentUpon>201702162147229_AddMovieAttributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702162249227_AddGenre.resx">
+      <DependentUpon>201702162249227_AddGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702162251071_AddDataToGeneres.resx">
+      <DependentUpon>201702162251071_AddDataToGeneres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702171453167_AddCopiestoMovies.resx">
+      <DependentUpon>201702171453167_AddCopiestoMovies.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -12,7 +12,7 @@
         @if (@Model.DateOfBirth.HasValue)
         {
             <li>
-                @Model.DateOfBirth.Value.ToString("dd-MMM-yyyy")
+                @Model.DateOfBirth.Value.ToShortDateString()
             </li>
            
         }

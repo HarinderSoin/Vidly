@@ -1,4 +1,6 @@
 ﻿@using System.Web.UI.WebControls
+@using Vidly.Migrations
+@using Vidly.Models
 @model IEnumerable<Vidly.Models.Movie>
 @{
     ViewBag.Title = "MoviesList";
@@ -6,7 +8,8 @@
 
 <h2>Movies List</h2>
 <table class="table table-bordered table-hover">
-    <thead> Movie Names</thead>
+    <th> Movie Names</th>
+    <th> Genre </th>
     @if (!Model.Any())
     {
         <p>No Movies yet</p>
@@ -17,8 +20,9 @@
          {
              <tr>
                  <td>
-                     @movies.MovieName
+                     @Html.ActionLink(movies.MovieName, "MovieDetails", "Movie", new { ID = movies.MovieID },null)
                  </td>
+                 <td> @movies.Genre.Name</td>
              </tr>
          }
 }

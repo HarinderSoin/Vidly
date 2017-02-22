@@ -32,15 +32,7 @@ namespace Vidly.Controllers
             return View("CustomerList", customers);
         }
         
-         /*
-        private IEnumerable<Customer> GetCustomers()
-        {
-            List<Customer> customer = new List<Customer>();
-            customer.Add(new Customer() {CustomerID = 1, CustomerName = "John Smith"});
-            customer.Add(new Customer() {CustomerID = 2, CustomerName = "Mary Williams"});
-            return customer; 
-        }
-        */
+
 
         [Route("customer/customerdetail/{customerID}")]
         public ActionResult CustomerDetail(int customerID)

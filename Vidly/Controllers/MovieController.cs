@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Web;
 using System.Web.Mvc;
+using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
@@ -28,22 +30,54 @@ namespace Vidly.Controllers
         {
             var movieDetail = new Movie();
             movieDetail= this._context.Movies.Include(m => m.Genre).SingleOrDefault(x => x.MovieID == id);
-            return View("MovieDetail", movieDetail);
+            var viewModel = new MovieFormViewModel
+            {
+                Title = "Edit Movie",
+                Movie = movieDetail,
+                Genres = _context.Genres.ToList()
+            };
+            return View("MovieForm", viewModel);
         }
-        /*
-        private IEnumerable<Movie> GetMovies()
-        {
-            List<Movie> movie = new List<Movie>();
-            movie.Add(new Movie() {MovieID = 1, MovieName = "Harry Potter"});
-            movie.Add(new Movie() {MovieID = 2, MovieName = "Lord of the Rings"});
-            return movie;
-        }
-        */
-
+       
         public ActionResult ListMovies()
         {
             var movie = this._context.Movies.Include(m => m.Genre).ToList();
             return View("MoviesList", movie);
+        }
+
+        public ActionResult NewMovie(int? id)
+        {
+            var movie = new Movie();
+            var viewModel = new MovieFormViewModel()
+            {
+                Genres = _context.Genres.ToList()
+            };
+
+           viewModel.Title = "New Movie";
+
+           
+            return View("MovieForm", viewModel);
+        }
+
+        public ActionResult Save(Movie movie)
+        {
+            if (movie.MovieID == 0)
+            {
+                _context.Movies.Add(movie);
+            }
+            else
+            {
+                var MovieInDB = _context.Movies.Single(m => m.MovieID == movie.MovieID);
+                MovieInDB.MovieName = movie.MovieName;
+                MovieInDB.DateAdded = movie.DateAdded;
+                MovieInDB.ReleaseDate = movie.ReleaseDate;
+                MovieInDB.NumberOfCopies = movie.NumberOfCopies;
+                MovieInDB.GenreId = movie.GenreId;
+            }
+            
+                _context.SaveChanges();
+            
+            return RedirectToAction("ListMovies", "movie");
         }
     }
 }

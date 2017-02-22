@@ -1,15 +1,20 @@
 ﻿@using System.Web.UI.WebControls
 @using Vidly.Migrations
 @using Vidly.Models
+@using Vidly.ViewModels
 @model IEnumerable<Vidly.Models.Movie>
+
 @{
     ViewBag.Title = "MoviesList"; 
 }
 
 <h2>Movies List</h2>
+
+@Html.ActionLink("New Movie", "NewMovie", "Movie", null, new { @class = "btn btn-primary" })
+<br/>
+<br />
 <table class="table table-bordered table-hover">
     <th> Movie Names</th>
-
     <th> Genre </th>
     @if (!Model.Any())
     {

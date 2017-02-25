@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json.Serialization;
 
 namespace Vidly.Models
 {
@@ -10,12 +11,16 @@ namespace Vidly.Models
 
     public class Customer
     {
+        
         public int CustomerID { get; set; }
 
         [Display (Name = "Date Of Birth")]
+        [DataType(DataType.Date,ErrorMessage = "Please enter date in the MM/DD/YYYY format!")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [Min18YearsIfAMember]
         public DateTime? DateOfBirth { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter Customer's name!")]
         [StringLength(255)]
         [Display (Name = "Customer Name")]
         public string CustomerName { get; set; }

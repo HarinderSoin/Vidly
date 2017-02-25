@@ -66,13 +66,24 @@ namespace Vidly.Controllers
 
             var customerViewModel = new CustomerViewModel();
             customerViewModel.MembershipType = membershipTypes;
+            customerViewModel.Customer = new Customer();
 
             return View("CustomerForm", customerViewModel); 
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerViewModel()
+                {
+                    Customer = customer,
+                    MembershipType = _context.MembershipTypes.ToList()
+                };
+                return View("CustomerForm", viewModel); 
+            }
             if (customer.CustomerID == 0)
                 _context.Customers.Add(customer);
             else

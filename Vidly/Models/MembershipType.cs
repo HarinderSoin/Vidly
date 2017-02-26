@@ -10,8 +10,8 @@ namespace Vidly.Models
     public class MembershipType
     {
         public byte Id { get; set; }
-        [Required]
 
+        [Required]
         public string MembershipName { get; set; }
         public short SignUpFee { get; set; }
 

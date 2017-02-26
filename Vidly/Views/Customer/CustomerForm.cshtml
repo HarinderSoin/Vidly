@@ -26,12 +26,7 @@
         @Html.ValidationMessageFor(m => m.Customer.DateOfBirth)
     </div>
     <br />
-    <div>
-        @Html.LabelFor(m => m.Customer.MembershipTypeId)
-        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipType, "Id", "MembershipName"), "Select Membership Type", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Customer.MembershipTypeId)
-    </div>
-    <br />
+
     <div class="checkbox">
         <label>
             @Html.CheckBoxFor(m => m.Customer.IsSubscribedToNewsletter) Subscribe to Newsletter?

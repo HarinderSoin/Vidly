@@ -25,11 +25,16 @@ namespace Vidly.Models
         public DateTime DateAdded { get; set; }
 
         [Display(Name = "Number of Copies")]
+        [MovieCopiesRange]
         [Required]
         public byte NumberOfCopies { get; set; }
 
-        [Required]
         public Genre Genre { get; set; }
+
+        [Display (Name = "Genre Type")]
         public byte GenreId { get; set; }
+
+        public static  readonly int MinCopies = 1;
+        public static readonly int MaxCopies = 20; 
     }
 }

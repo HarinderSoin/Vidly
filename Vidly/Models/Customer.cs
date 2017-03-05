@@ -17,7 +17,7 @@ namespace Vidly.Models
         [Display (Name = "Date Of Birth")]
         [DataType(DataType.Date,ErrorMessage = "Please enter date in the MM/DD/YYYY format!")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        [Min18YearsIfAMember]
+        //[Min18YearsIfAMember]
         public DateTime? DateOfBirth { get; set; }
 
         [Required(ErrorMessage = "Please enter Customer's name!")]

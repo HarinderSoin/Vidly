@@ -20,9 +20,10 @@ namespace Vidly.Controllers.API
             _context = new ApplicationDbContext();
         }
         //Get /api/customers
-        public IEnumerable<CustomerDTO> GetCustomers()
+        public  IHttpActionResult GetCustomers()
         {
-            return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDTO>);
+            var customerDTO = _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDTO>);
+            return Ok(customerDTO);
         }
 
         //Get /api/customers/1
@@ -49,10 +50,10 @@ namespace Vidly.Controllers.API
 
         //Put /api/customers/1
         [HttpPut]
-        public CustomerDTO UpdateCustomer(int id, CustomerDTO customerDTO)
+        public IHttpActionResult UpdateCustomer(int id, CustomerDTO customerDTO)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                BadRequest();
 
             var customerInDB = _context.Customers.SingleOrDefault(c => c.CustomerID == id);
 
@@ -61,12 +62,12 @@ namespace Vidly.Controllers.API
 
             var customer = Mapper.Map(customerDTO, customerInDB);
             _context.SaveChanges();
-            return customerDTO; 
+            return Ok(Mapper.Map(customerInDB, customerDTO)); 
         }
 
         // DELETE /api/customers/1
         [HttpDelete]
-        public void DeleteCustomer(int id)
+        public IHttpActionResult DeleteCustomer(int id)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -77,7 +78,9 @@ namespace Vidly.Controllers.API
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
             _context.Customers.Remove(customerInDB);
-            _context.SaveChanges(); 
+            _context.SaveChanges();
+
+            return Ok();
         }
 
     }

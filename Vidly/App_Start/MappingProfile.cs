@@ -13,7 +13,9 @@ namespace Vidly.App_Start
         public MappingProfile()
         {
             Mapper.CreateMap<Customer, CustomerDTO>(); 
-            Mapper.CreateMap<CustomerDTO, Customer>(); 
+            Mapper.CreateMap<CustomerDTO, Customer>();
+            Mapper.CreateMap<Movie, MoviesDTO>();
+            Mapper.CreateMap<MoviesDTO, Movie>();
 
         }
     }
